@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Movie Recommendations</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h1>Content-Based Movie Recommendations</h1>
+        <form action="{{ url_for('select_content_recommendations') }}" method="post">
+            <div class="recommendations">
+                {% for movie in recommendations %}
+                    <div class="movie">
+                        <input type="checkbox" name="selected_movies" value="{{ movie['id'] }}">
+                        <label>{{ movie['title'] }}</label>
+                    </div>
+                {% endfor %}
+            </div>
+            <button type="submit">Get Personalized Recommendations</button>
+        </form>
+    </div>
+</body>
+</html>
